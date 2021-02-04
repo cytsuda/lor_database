@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="32" width="32" viewBox="0 0 32 32">
+    <defs>
+        <linearGradient id="lor-last-breath-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="25%" stop-color="#9bf7fa"/>
+            <stop offset="75%" stop-color="#20b0e5"/>
+        </linearGradient>
+    </defs>
+    <path d="M7.23 6.681l6.77 5.319-4.25 2.75 11.629 7.509c-1.478 1.481-3.259 3.061-5.379 4.741l-0.401-0.32c-12.998-10.435-12.808-16.941-8.369-19.999zM24.664 6.609c3.785 2.524 4.62 7.477-2.79 15.145l-4.375-5.754 3.75-2.25-4.866-6.72c2.606-2.224 5.366-2.364 8.28-0.421z" fill="url(#lor-last-breath-fill)"/>
+</svg>
