@@ -36,3 +36,19 @@ export interface TypeCard {
   typeRef: string;
   assets: TypeCardAssets[];
 }
+
+interface FilterStringTypes {
+  active: boolean;
+  value: string[];
+}
+
+// interface FilterNumberTypes {
+//   active: boolean;
+//   value: number[];
+// }
+export interface reduxState {
+  filter: FilterStateTypes;
+}
+export interface FilterStateTypes {
+  cardDisplay: string;
+}

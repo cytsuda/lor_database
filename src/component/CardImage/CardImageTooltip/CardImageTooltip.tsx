@@ -11,7 +11,7 @@ import SpriteImg from "../../SpriteImg/SpriteImg";
 import useStyles from "./CardImageTooltipStyle";
 
 // types
-import { TypeCard } from "../../../../typesProps";
+import { TypeCard } from "../../../typesProps";
 
 // Info Data
 import { keywords } from "../../../data/info_data.json";
@@ -30,9 +30,8 @@ const KeywordsComponent = (props: { data: any }) => {
         <img
           className={classes.cardKeywordImg}
           alt={data.name}
-          src={`./img/common/keywords/Keyword_${data.icon}.svg`}
+          src={`./img/common/keywords/Keyword_${data.nameRef}.svg`}
         />
-        <span className={classes.cardKeywordInfo}>{data.icon}</span>
         <span className={classes.cardKeywordInfo}>{data.name}</span>
       </div>
       <div className={classes.cardKeywordDesc}>{data.description}</div>

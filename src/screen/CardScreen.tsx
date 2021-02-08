@@ -1,7 +1,7 @@
 import React from "react";
 
 // CustomComponent
-import Layout from "../hoc/Layout";
+import Layout from "../hoc/Layout/Layout";
 
 // RawData
 import rawData from "../data/lor_data.json";

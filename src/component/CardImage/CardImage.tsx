@@ -6,7 +6,7 @@ import CardImageTooltip from "./CardImageTooltip/CardImageTooltip";
 // Style
 import useStyle from "./Styles";
 // Types
-import { TypeCard } from "../../../typesProps";
+import { TypeCard } from "../../typesProps";
 
 const CardScreen = (props: { data: TypeCard }) => {
   const classes = useStyle();

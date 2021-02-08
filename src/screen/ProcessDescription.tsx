@@ -2,7 +2,7 @@ import React from "react";
 import JsxParser from "react-jsx-parser";
 
 // Layout
-import Layout from "../hoc/Layout";
+import Layout from "../hoc/LayoutWFilter/Layout";
 
 // CustomComponent
 import SpecialTag from "../component/SpecialTag/SpecialTag";
@@ -12,7 +12,6 @@ import SpriteImg from "../component/SpriteImg/SpriteImg";
 import dataRaw from "../data/lor_data.json";
 
 const CustomComponent = (value: string) => {
-  console.log("CUSTOM COMPONENT");
   return <JsxParser components={{ SpecialTag, SpriteImg }} jsx={value} />;
 };
 
