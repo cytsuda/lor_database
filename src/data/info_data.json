@@ -518,5 +518,23 @@
       "name": "Chamado da Montanha",
       "nameRef": "Set3"
     }
+  ],
+  "types": [
+    {
+      "name": "Campeão",
+      "nameRef": "Champion"
+    },
+    {
+      "name": "Unidade",
+      "nameRef": "Follower"
+    },
+    {
+      "name": "Feitiço",
+      "nameRef": "Spell"
+    },
+    {
+      "name": "Monumento",
+      "nameRef": "Landmark"
+    }
   ]
 }

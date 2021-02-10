@@ -10,7 +10,7 @@ import useStyles from "./FiltersStyles";
 import { FilterStringTypes } from "../../../typesProps";
 
 // Info
-import { regions } from "../../../data/info_data.json";
+import { types } from "../../../data/info_data.json";
 
 // Interface
 interface PropTypes {
@@ -18,7 +18,7 @@ interface PropTypes {
   handler: (value: string[]) => void;
 }
 
-const FilterSetComp = (props: PropTypes) => {
+const FilterTypeComp = (props: PropTypes) => {
   const classes = useStyles();
   const { data, handler } = props;
 
@@ -28,7 +28,7 @@ const FilterSetComp = (props: PropTypes) => {
       value={data.value}
       onChange={(e, value) => handler(value)}
     >
-      {regions.map((item) => (
+      {types.map((item) => (
         <ToggleButton
           classes={{ root: classes.genRoot }}
           key={item.nameRef}
@@ -36,8 +36,8 @@ const FilterSetComp = (props: PropTypes) => {
         >
           <img
             className={classes.genImg}
-            alt={item.nameRef}
-            src={`./img/regions/icon-${item.nameRef.toLowerCase()}.png`}
+            alt={item.name}
+            src={`./img/common/types/${item.nameRef}_card.svg`}
           />
           <span className={classes.genInfo}>{item.name}</span>
         </ToggleButton>
@@ -46,4 +46,4 @@ const FilterSetComp = (props: PropTypes) => {
   );
 };
 
-export default FilterSetComp;
+export default FilterTypeComp;

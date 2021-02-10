@@ -6,8 +6,10 @@ import {
   FILTER_REGION_DISABLE,
   FILTER_SET_ACTIVE,
   FILTER_SET_DISABLE,
-  FILTER_MANA_DISABLE,
+  FILTER_TYPE_ACTIVE,
+  FILTER_TYPE_DISABLE,
   FILTER_MANA_ACTIVE,
+  FILTER_MANA_DISABLE,
 } from "../constants/filterConstants";
 
 import { FilterStateTypes } from "../../typesProps";
@@ -22,6 +24,10 @@ const initialState: FilterStateTypes = {
     value: [],
   },
   mana: {
+    active: false,
+    value: [],
+  },
+  type: {
     active: false,
     value: [],
   },
@@ -56,7 +62,7 @@ export default function filterReducer(
     case FILTER_REGION_DISABLE:
       return produce(state, (draft) => {
         draft.region = {
-          active: true,
+          active: false,
           value: action.payload,
         };
       });
@@ -70,6 +76,20 @@ export default function filterReducer(
     case FILTER_MANA_DISABLE:
       return produce(state, (draft) => {
         draft.mana = {
+          active: false,
+          value: action.payload,
+        };
+      });
+    case FILTER_TYPE_ACTIVE:
+      return produce(state, (draft) => {
+        draft.type = {
+          active: true,
+          value: action.payload,
+        };
+      });
+    case FILTER_TYPE_DISABLE:
+      return produce(state, (draft) => {
+        draft.type = {
           active: false,
           value: action.payload,
         };

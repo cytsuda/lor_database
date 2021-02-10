@@ -34,6 +34,7 @@ export interface TypeCard {
   supertype: string;
   type: string;
   typeRef: string;
+  typeRaw: string;
   assets: TypeCardAssets[];
 }
 
@@ -60,6 +61,7 @@ export interface FilterStateTypes {
   set: FilterStringTypes;
   region: FilterStringTypes;
   mana: FilterNumberTypes;
+  type: FilterStringTypes;
 }
 
 export interface InfoDataType {

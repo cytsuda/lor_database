@@ -29,7 +29,7 @@ const KeywordsComponent = (props: { data: any }) => {
       <div className={classes.cardKeywordTittle}>
         <img
           className={classes.cardKeywordImg}
-          alt={data.name}
+          alt={data.nameRef}
           src={`./img/common/keywords/Keyword_${data.nameRef}.svg`}
         />
         <span className={classes.cardKeywordInfo}>{data.name}</span>
@@ -45,11 +45,13 @@ const CardImageTooltipComponent = (props: { data: TypeCard }) => {
   return (
     <div className={classes.card}>
       <div className={classes.cardType}>
-        <img
-          className={classes.cartTypeImg}
-          src={`./img/common/types/${data.typeRef}_card.svg`}
-          alt={data.name}
-        />
+        {data.typeRef !== "Skill" && (
+          <img
+            className={classes.cartTypeImg}
+            src={`./img/common/types/${data.typeRef}_card.svg`}
+            alt={data.typeRef}
+          /> 
+        )}
         <span className={classes.cartTypeInfo}>{data.type}</span>
       </div>
       {data.keywordRefs.length > 0 ? (

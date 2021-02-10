@@ -52,23 +52,23 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "45%",
     },
     // ---------------------------------------
-    regionRoot: {
+    gen: {
       display: "grid",
       gridTemplateColumns: "repeat(2,1fr)",
       gridGap: theme.spacing(1),
     },
-    regionCont: {
+    genRoot: {
       border: `transparent!important`,
       borderRadius: "4px!important",
       display: "flex",
       justifyContent: "flex-start",
       padding: theme.spacing(1),
     },
-    regionImg: {
+    genImg: {
       height: 24,
-      marginRight: theme.spacing(1),
+      marginRight: theme.spacing(0.5),
     },
-    regionInfo: {
+    genInfo: {
       fontSize: theme.typography.pxToRem(16),
       fontWeight: 400,
       textTransform: "none",

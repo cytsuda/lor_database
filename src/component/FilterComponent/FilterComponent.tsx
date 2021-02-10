@@ -6,6 +6,7 @@ import Base from "./Filters/Base";
 import FilterSetComp from "./Filters/FilterSetComp";
 import FilterRegionComp from "./Filters/FilterRegionComp";
 import FilterManaComp from "./Filters/FilterManaComp";
+import FilterTypeComp from "./Filters/FilterTypeComp";
 
 // Styles
 import useStyles from "./FilterComponentStyle";
@@ -18,12 +19,13 @@ import {
   filterSetAction,
   filterRegionAction,
   filterManaAction,
+  filterTypeAction,
 } from "../../redux/actions/filterActions";
 
 const FilterComponent = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { set, region, mana } = useSelector(
+  const { set, region, mana, type } = useSelector(
     (state: reduxState) => state.filter
   );
 
@@ -36,7 +38,10 @@ const FilterComponent = () => {
 
   const manaHandler = (value: number[]) => {
     dispatch(filterManaAction(value));
-    console.log(mana);
+  };
+
+  const typeHandler = (value: string[]) => {
+    dispatch(filterTypeAction(value));
   };
 
   return (
@@ -50,6 +55,10 @@ const FilterComponent = () => {
       <Base title="Custo de Mana" handler={manaHandler}>
         <FilterManaComp data={mana} handler={manaHandler} />
       </Base>
+      <Base title="Tipo" handler={typeHandler}>
+        <FilterTypeComp data={type} handler={typeHandler} />
+      </Base>
+
     </div>
   );
 };
