@@ -2,9 +2,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 
-import { filterReducer } from "./reducers/filterReducer";
+import filterReducer from "./reducers/filterReducer";
+import displayReducer from "./reducers/displayReducer";
 
-const reducer = combineReducers({ filter: filterReducer });
+const reducer = combineReducers({ filter: filterReducer, display: displayReducer });
 
 const initialState = {}
 

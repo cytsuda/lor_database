@@ -25,10 +25,12 @@ import {
   ViewListOutlined,
   FilterList,
   Search,
+  Visibility,
+  VisibilityOff,
 } from "@material-ui/icons";
 
 // Custom Component
-import Filtercomponent from "../../component/FilterComponent/FilterComponent";
+import FilterComponent from "../../component/FilterComponent/FilterComponent";
 
 // Style
 import useStyles from "./LayoutStyle";
@@ -37,13 +39,15 @@ import useStyles from "./LayoutStyle";
 import { reduxState } from "../../typesProps";
 
 // Redux Action
-import { cardDisplayChange } from "../../redux/actions/filterActions";
+import {
+  cardDisplayChange,
+  cardCollectibleChange,
+} from "../../redux/actions/displayActions";
 
 export default function CustomLayout(props: { children: React.ReactNode }) {
-  const filterState = useSelector((state: reduxState) => state.filter);
-  const { cardDisplay } = filterState;
+  const display = useSelector((state: reduxState) => state.display);
+  const { cardDisplay, collectible } = display;
   const dispatch = useDispatch();
-  // console.log(cardDisplay);
 
   const [openLeft, setOpenLeft] = useState<boolean>(false);
   const [openRight, setOpenRight] = useState<boolean>(false);
@@ -61,6 +65,9 @@ export default function CustomLayout(props: { children: React.ReactNode }) {
     if (value !== null) {
       dispatch(cardDisplayChange(value));
     }
+  };
+  const handleCardCollectible = () => {
+    dispatch(cardCollectibleChange(!collectible));
   };
 
   return (
@@ -86,11 +93,11 @@ export default function CustomLayout(props: { children: React.ReactNode }) {
         </Toolbar>
       </AppBar>
       <Drawer
-        className={classes.drawer}
+        className={classes.drawerLeft}
         variant="persistent"
         anchor="left"
         open={openLeft}
-        classes={{ paper: classes.drawerPaper }}
+        classes={{ paper: classes.drawerPaperLeft }}
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerLeftToggle}>
@@ -142,7 +149,16 @@ export default function CustomLayout(props: { children: React.ReactNode }) {
               />
             </div>
             <ToggleButton
-              className={classes.filterBtn}
+              className={classes.filterBtnCenter}
+              value={!collectible}
+              selected={collectible}
+              onChange={handleCardCollectible}
+              aria-label="filter"
+            >
+              {collectible ? <Visibility /> : <VisibilityOff />}
+            </ToggleButton>
+            <ToggleButton
+              className={classes.filterBtnRight}
               value="check"
               selected={openRight}
               onChange={handleDrawerRightToggle}
@@ -155,14 +171,14 @@ export default function CustomLayout(props: { children: React.ReactNode }) {
         {children}
       </main>
       <Drawer
-        className={classes.drawer}
+        className={clsx(classes.drawerRight, { [classes.right]: !openRight })}
         variant="persistent"
         anchor="right"
         open={openRight}
-        classes={{ paper: classes.drawerPaper }}
+        classes={{ paper: classes.drawerPaperRight }}
       >
         <Toolbar />
-        <Filtercomponent />
+        <FilterComponent />
       </Drawer>
     </div>
   );

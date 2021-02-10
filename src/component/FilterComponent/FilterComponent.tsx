@@ -1,49 +1,57 @@
-import React, { useState } from "react";
-import clsx from "clsx";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-// Material-Ui
-import { ToggleButtonGroup, ToggleButton } from "@material-ui/lab";
+// Custom component
+import Base from "./Filters/Base";
+import FilterSetComp from "./Filters/FilterSetComp";
+import FilterRegionComp from "./Filters/FilterRegionComp";
+import FilterManaComp from "./Filters/FilterManaComp";
 
-// Data
-import { sets } from "../../data/info_data.json";
-
+// Styles
 import useStyles from "./FilterComponentStyle";
+
+// Types
+import { reduxState } from "../../typesProps";
+
+// Action
+import {
+  filterSetAction,
+  filterRegionAction,
+  filterManaAction,
+} from "../../redux/actions/filterActions";
+
 const FilterComponent = () => {
   const classes = useStyles();
-  const [set, setSet] = useState<string[]>([]);
+  const dispatch = useDispatch();
+  const { set, region, mana } = useSelector(
+    (state: reduxState) => state.filter
+  );
 
-  const changeSetHandler = (event: React.MouseEvent, value: string[]) => {
-    setSet(value);
+  const setHandler = (value: string[]) => {
+    dispatch(filterSetAction(value));
+  };
+  const regionHandler = (value: string[]) => {
+    dispatch(filterRegionAction(value));
+  };
+
+  const manaHandler = (value: number[]) => {
+    dispatch(filterManaAction(value));
+    console.log(mana);
   };
 
   return (
-    <>
-      <h4 className={classes.base}>Filter component</h4>
-      <ToggleButtonGroup
-        className={clsx(classes.base)}
-        value={set}
-        onChange={changeSetHandler}
-      >
-        {sets.map((item) => (
-          <ToggleButton
-            value={item.nameRef.toLowerCase()}
-            aria-label="Primordiais"
-          >
-            <img
-              className={classes.setImg}
-              alt={item.name}
-              src={`./img/sets/${item.nameRef.toLowerCase()}.png`}
-            />
-          </ToggleButton>
-        ))}
-      </ToggleButtonGroup>
-      <p>{set}</p>
-    </>
+    <div className={classes.root}>
+      <Base title="Conjunto" handler={setHandler}>
+        <FilterSetComp data={set} handler={setHandler} />
+      </Base>
+      <Base title="Região" handler={regionHandler}>
+        <FilterRegionComp data={region} handler={regionHandler} />
+      </Base>
+      <Base title="Custo de Mana" handler={manaHandler}>
+        <FilterManaComp data={mana} handler={manaHandler} />
+      </Base>
+    </div>
   );
 };
 
 export default FilterComponent;
-
-{
-  /* <Chip color="primary" onDelete={handleDelete} avatar={<Avatar src="/static/images/avatar/1.jpg" />} /> */
-}

@@ -37,18 +37,47 @@ export interface TypeCard {
   assets: TypeCardAssets[];
 }
 
-interface FilterStringTypes {
+export interface reduxState {
+  display: DisplayStateTypes;
+  filter: FilterStateTypes;
+}
+export interface DisplayStateTypes {
+  cardDisplay: string;
+  collectible: boolean;
+}
+
+export interface FilterStringTypes {
   active: boolean;
   value: string[];
 }
 
-// interface FilterNumberTypes {
-//   active: boolean;
-//   value: number[];
-// }
-export interface reduxState {
-  filter: FilterStateTypes;
+export interface FilterNumberTypes {
+  active: boolean;
+  value: number[];
 }
+
 export interface FilterStateTypes {
-  cardDisplay: string;
+  set: FilterStringTypes;
+  region: FilterStringTypes;
+  mana: FilterNumberTypes;
 }
+
+export interface InfoDataType {
+  icon?: string;
+  name: string;
+  nameRef: string;
+  description?: string;
+  abbreviation?: string;
+  iconAbsolutePath?: string;
+}
+
+/*
+
+name
+nameRef
+description?
+icon?
+abbreviation?
+iconAbsolutePath?
+
+*/

@@ -5,7 +5,8 @@ import {
   fade,
 } from "@material-ui/core/styles";
 
-const drawerWidth = 250;
+const drawerWidthRight = 360;
+const drawerWidthLeft = 250;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -19,8 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: theme.zIndex.drawer + 1,
     },
     appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidthLeft}px)`,
+      marginLeft: drawerWidthLeft,
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
@@ -32,12 +33,22 @@ const useStyles = makeStyles((theme: Theme) =>
     hide: {
       display: "none",
     },
-    drawer: {
-      width: drawerWidth,
+    drawerLeft: {
+      width: drawerWidthLeft,
       flexShrink: 0,
     },
-    drawerPaper: {
-      width: drawerWidth,
+    drawerRight: {
+      width: drawerWidthRight,
+      flexShrink: 0,
+    },
+    right: {
+      zIndex: -1,
+    },
+    drawerPaperRight: {
+      width: drawerWidthRight,
+    },
+    drawerPaperLeft: {
+      width: drawerWidthLeft,
     },
     drawerHeader: {
       display: "flex",
@@ -54,8 +65,8 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      marginLeft: -drawerWidth,
-      marginRight: -drawerWidth,
+      marginLeft: -drawerWidthLeft,
+      marginRight: -drawerWidthRight,
     },
     contentShiftLeft: {
       transition: theme.transitions.create("margin", {
@@ -109,8 +120,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "100%",
     },
     searchInputBox: {
-      // padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create("width"),
       width: "100%",
@@ -121,11 +130,13 @@ const useStyles = makeStyles((theme: Theme) =>
         },
       },
     },
-    filterBtn:{
-      
+    filterBtnRight: {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
-    }
+    },
+    filterBtnCenter: {
+      borderRadius: 0,
+    },
   })
 );
 
