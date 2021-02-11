@@ -10,6 +10,10 @@ import {
   FILTER_TYPE_DISABLE,
   FILTER_MANA_ACTIVE,
   FILTER_MANA_DISABLE,
+  FILTER_RARITY_ACTIVE,
+  FILTER_RARITY_DISABLE,
+  FILTER_KEYWORD_ACTIVE,
+  FILTER_KEYWORD_DISABLE,
 } from "../constants/filterConstants";
 
 import { FilterStateTypes } from "../../typesProps";
@@ -31,12 +35,17 @@ const initialState: FilterStateTypes = {
     active: false,
     value: [],
   },
+  rarity: {
+    active: false,
+    value: [],
+  },
+  keyword: {
+    active: false,
+    value: [],
+  },
 };
 
-export default function filterReducer(
-  state = initialState,
-  action: AT
-): FilterStateTypes {
+export default function filterReducer(state = initialState, action: AT): FilterStateTypes {
   switch (action.type) {
     case FILTER_SET_ACTIVE:
       return produce(state, (draft) => {
@@ -90,6 +99,34 @@ export default function filterReducer(
     case FILTER_TYPE_DISABLE:
       return produce(state, (draft) => {
         draft.type = {
+          active: false,
+          value: action.payload,
+        };
+      });
+    case FILTER_RARITY_ACTIVE:
+      return produce(state, (draft) => {
+        draft.rarity = {
+          active: true,
+          value: action.payload,
+        };
+      });
+    case FILTER_RARITY_DISABLE:
+      return produce(state, (draft) => {
+        draft.rarity = {
+          active: false,
+          value: action.payload,
+        };
+      });
+    case FILTER_KEYWORD_ACTIVE:
+      return produce(state, (draft) => {
+        draft.keyword = {
+          active: true,
+          value: action.payload,
+        };
+      });
+    case FILTER_KEYWORD_DISABLE:
+      return produce(state, (draft) => {
+        draft.keyword = {
           active: false,
           value: action.payload,
         };

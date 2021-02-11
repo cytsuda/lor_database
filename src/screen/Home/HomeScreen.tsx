@@ -28,7 +28,7 @@ const CardScreen = () => {
   const [data, setData] = useState(dataSort);
   const { filter, display } = useSelector((state: reduxState) => state);
   const { cardDisplay, collectible } = display;
-  const { set, region, mana, type } = filter;
+  const { set, region, mana, type, rarity, keyword } = filter;
 
   useEffect(() => {
     setLoading(true);
@@ -43,6 +43,7 @@ const CardScreen = () => {
         newData = newData.filter((item) => {
           const val = set.value.find((el) => el === item.set.toLowerCase());
           if (val) return val;
+          else return false;
         });
         console.log("com filtro de conjunto");
       }
@@ -53,6 +54,7 @@ const CardScreen = () => {
             (el) => el.toLowerCase() === item.regionRef.toLowerCase()
           );
           if (val) return val;
+          else return false;
         });
         console.log("com filtro de regioes");
       }
@@ -63,6 +65,7 @@ const CardScreen = () => {
             el >= 7 && el <= item.cost ? true : el === item.cost ? true : false
           );
           if (val !== undefined) return true;
+          else return false;
         });
         console.log("com filtro de custo de mana");
       }
@@ -71,14 +74,34 @@ const CardScreen = () => {
         newData = newData.filter((item) => {
           const val = type.value.find((el) => el === item.typeRef);
           if (val) return val;
+          else return false;
         });
         console.log("com filtro de type");
       }
+
+      if (rarity.active) {
+        newData = newData.filter((item) => {
+          const val = rarity.value.find((el) => el === item.rarityRef);
+          if (val) return val;
+          else return false;
+        });
+      }
+
+      if (keyword.active) {
+        newData = newData.filter((item) => {
+          const val = keyword.value.find((el) => {
+            return item.keywordRefs.find((i) => i.includes(el.value));
+          });
+          if (val) return true;
+          else return false;
+        });
+      }
+
       console.log(newData.length);
       return newData;
     });
     setLoading(false);
-  }, [collectible, set, region, mana, type]);
+  }, [collectible, set, region, mana, type, rarity, keyword]);
 
   const showedData = data.slice(0, 100);
 

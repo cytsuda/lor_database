@@ -18,7 +18,7 @@ interface PropTypes {
   handler: (value: string[]) => void;
 }
 
-const FilterSetComp = (props: PropTypes) => {
+const FilterRegionComp = (props: PropTypes) => {
   const classes = useStyles();
   const { data, handler } = props;
 
@@ -46,4 +46,4 @@ const FilterSetComp = (props: PropTypes) => {
   );
 };
 
-export default FilterSetComp;
+export default FilterRegionComp;

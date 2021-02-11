@@ -30,7 +30,9 @@ const KeywordsComponent = (props: { data: any }) => {
         <img
           className={classes.cardKeywordImg}
           alt={data.nameRef}
-          src={`./img/common/keywords/Keyword_${data.nameRef}.svg`}
+          src={`./img/common/keywords/Keyword_${
+            data.nameRef === "SpellOverwhelm" ? "Overwhelm" : data.nameRef
+          }.svg`}
         />
         <span className={classes.cardKeywordInfo}>{data.name}</span>
       </div>
@@ -50,7 +52,7 @@ const CardImageTooltipComponent = (props: { data: TypeCard }) => {
             className={classes.cartTypeImg}
             src={`./img/common/types/${data.typeRef}_card.svg`}
             alt={data.typeRef}
-          /> 
+          />
         )}
         <span className={classes.cartTypeInfo}>{data.type}</span>
       </div>

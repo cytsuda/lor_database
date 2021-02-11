@@ -26,9 +26,10 @@ const FilterSetComp = (props: PropTypes) => {
     <ToggleButtonGroup
       value={data.value}
       onChange={(e, value) => handler(value)}
+      className={classes.set}
     >
       {sets.map((item) => (
-        <ToggleButton key={item.nameRef} value={item.nameRef.toLowerCase()}>
+        <ToggleButton classes={{root: classes.setItem}} key={item.nameRef} value={item.nameRef.toLowerCase()}>
           <img
             className={classes.setImg}
             alt={item.name}

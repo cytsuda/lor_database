@@ -20,7 +20,7 @@ interface PropTypes {
 }
 
 const manaValues = [0, 1, 2, 3, 4, 5, 6, 7];
-const FilterSetComp = (props: PropTypes) => {
+const FilterManaComp = (props: PropTypes) => {
   const classes = useStyles();
   const manaClasses = manaStyles();
   const { data, handler } = props;
@@ -47,4 +47,4 @@ const FilterSetComp = (props: PropTypes) => {
   );
 };
 
-export default FilterSetComp;
+export default FilterManaComp;

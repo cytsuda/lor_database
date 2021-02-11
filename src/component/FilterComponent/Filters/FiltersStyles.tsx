@@ -1,4 +1,5 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import { grey } from "@material-ui/core/colors";
 
 const borderColor = grey[700];
@@ -6,12 +7,12 @@ const borderColor = grey[700];
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     baseRoot: {
-      padding: `${theme.spacing(2)}px ${theme.spacing(1)}px`,
+      padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
     },
     baseTitle: {
       display: "flex",
       alignItems: "center",
-      marginBottom: theme.spacing(2),
+      marginBottom: theme.spacing(1.5),
     },
     baseText: {
       fontSize: theme.typography.pxToRem(18),
@@ -26,36 +27,33 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     baseBtn: {
       color: borderColor,
-      fontSize: theme.typography.pxToRem(16),
+      fontSize: theme.typography.pxToRem(14),
       letterSpacing: 1,
       fontFamily: "Beoford",
       textTransform: "capitalize",
       fontWeight: 600,
-      paddingRight: theme.spacing(1.5),
-      paddingLeft: theme.spacing(1.5),
+      padding: `${theme.spacing(0.5)}px ${theme.spacing(2)}px`,
       "&:hover": {
         color: grey[400],
       },
     },
     // ---------------------------------------
-    setItem: {
-      width: "33%",
+    set: {
       display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      gridGap: theme.spacing(1),
-      padding: `${theme.spacing(1)}px 0`,
-      border: `1px solid ${grey[700]}`,
+      gridGap: theme.spacing(0.5),
+    },
+    setItem: {
+      borderRadius: `${theme.spacing(0.5)}px !important`,
+      border: `1px solid ${fade(borderColor, 0.5)}!important`,
     },
     setImg: {
-      width: "45%",
+      width: "30%",
     },
     // ---------------------------------------
     gen: {
       display: "grid",
       gridTemplateColumns: "repeat(2,1fr)",
-      gridGap: theme.spacing(1),
+      gridGap: theme.spacing(0.5),
     },
     genRoot: {
       border: `transparent!important`,
@@ -71,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
     genInfo: {
       fontSize: theme.typography.pxToRem(16),
       fontWeight: 400,
-      textTransform: "none",
+      textTransform: "capitalize",
     },
     // ---------------------------------------
     mana: {
@@ -90,6 +88,8 @@ const useStyles = makeStyles((theme: Theme) =>
     manaActive: {
       opacity: 1,
     },
+    // ---------------------------------------
+    
   })
 );
 

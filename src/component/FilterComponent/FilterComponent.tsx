@@ -7,12 +7,14 @@ import FilterSetComp from "./Filters/FilterSetComp";
 import FilterRegionComp from "./Filters/FilterRegionComp";
 import FilterManaComp from "./Filters/FilterManaComp";
 import FilterTypeComp from "./Filters/FilterTypeComp";
+import FilterRarityComp from "./Filters/FilterRarityComp";
+import FilterKeywordComp from "./Filters/FilterKeywordComp";
 
 // Styles
 import useStyles from "./FilterComponentStyle";
 
 // Types
-import { reduxState } from "../../typesProps";
+import { reduxState, SelectTypes } from "../../typesProps";
 
 // Action
 import {
@@ -20,12 +22,14 @@ import {
   filterRegionAction,
   filterManaAction,
   filterTypeAction,
+  filterRarityAction,
+  filterKeywordAction,
 } from "../../redux/actions/filterActions";
 
 const FilterComponent = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { set, region, mana, type } = useSelector(
+  const { set, region, mana, type, rarity, keyword } = useSelector(
     (state: reduxState) => state.filter
   );
 
@@ -35,13 +39,17 @@ const FilterComponent = () => {
   const regionHandler = (value: string[]) => {
     dispatch(filterRegionAction(value));
   };
-
   const manaHandler = (value: number[]) => {
     dispatch(filterManaAction(value));
   };
-
   const typeHandler = (value: string[]) => {
     dispatch(filterTypeAction(value));
+  };
+  const rarityHandler = (value: string[]) => {
+    dispatch(filterRarityAction(value));
+  };
+  const keywordHandler = (value: SelectTypes[]) => {
+    dispatch(filterKeywordAction(value));
   };
 
   return (
@@ -58,7 +66,12 @@ const FilterComponent = () => {
       <Base title="Tipo" handler={typeHandler}>
         <FilterTypeComp data={type} handler={typeHandler} />
       </Base>
-
+      <Base title="Raridade" handler={rarityHandler}>
+        <FilterRarityComp data={rarity} handler={rarityHandler} />
+      </Base>
+      <Base title="Palavras-chave" handler={() => console.log("Testing")}>
+        <FilterKeywordComp data={keyword} handler={keywordHandler} />
+      </Base>
     </div>
   );
 };

@@ -57,11 +57,23 @@ export interface FilterNumberTypes {
   value: number[];
 }
 
+export interface SelectTypes {
+  label: string;
+  value: string;
+}
+
+export interface FilterKeywordTypes {
+  active: boolean;
+  value: SelectTypes[];
+}
+
 export interface FilterStateTypes {
   set: FilterStringTypes;
   region: FilterStringTypes;
   mana: FilterNumberTypes;
   type: FilterStringTypes;
+  rarity: FilterStringTypes;
+  keyword: FilterKeywordTypes;
 }
 
 export interface InfoDataType {
@@ -72,14 +84,3 @@ export interface InfoDataType {
   abbreviation?: string;
   iconAbsolutePath?: string;
 }
-
-/*
-
-name
-nameRef
-description?
-icon?
-abbreviation?
-iconAbsolutePath?
-
-*/

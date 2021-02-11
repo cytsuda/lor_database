@@ -23,7 +23,6 @@ const Base = (props: BaseProps) => {
         <div className={classes.baseLine} />
         <Button
           size="small"
-          variant="outlined"
           className={classes.baseBtn}
           onClick={() => handler([])}
         >

@@ -5,7 +5,6 @@ interface CD_AT {
   type: typeof CARD_DISPLAY_CHANGE;
   payload: string;
 }
-
 interface CC_AT {
   type: typeof CARD_COLLECTIBLE;
   payload: boolean;
