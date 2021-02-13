@@ -25,8 +25,9 @@ const FilterSetComp = (props: PropTypes) => {
   return (
     <ToggleButtonGroup
       value={data.value}
+      classes={{root:classes.set}}
       onChange={(e, value) => handler(value)}
-      className={classes.set}
+      // className={classes.set}
     >
       {sets.map((item) => (
         <ToggleButton classes={{root: classes.setItem}} key={item.nameRef} value={item.nameRef.toLowerCase()}>

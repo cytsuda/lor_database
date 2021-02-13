@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "transparent",
       border: `1px solid ${grey[600]}`,
     },
+    avatarType: {
+      backgroundColor: "transparent",
+      borderColor: "transparent",
+    },
     avatarImg: {
       height: 40,
     },

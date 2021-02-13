@@ -69,7 +69,7 @@ const FilterComponent = () => {
       <Base title="Raridade" handler={rarityHandler}>
         <FilterRarityComp data={rarity} handler={rarityHandler} />
       </Base>
-      <Base title="Palavras-chave" handler={() => console.log("Testing")}>
+      <Base title="Palavras-chave">
         <FilterKeywordComp data={keyword} handler={keywordHandler} />
       </Base>
     </div>

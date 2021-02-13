@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 import {
   Avatar,
   ListItem,
@@ -11,7 +12,7 @@ import {
   Divider,
   Grid,
 } from "@material-ui/core";
-import { ExpandMore, ExpandLess } from "@material-ui/icons";
+import { ExpandMore, ExpandLess, NotInterested } from "@material-ui/icons";
 
 // Custom Components
 import SpecialComponent from "../../SpecialComponent/SpecialComponent";
@@ -31,8 +32,13 @@ const CardItem = (props: { data: TypeCard }) => {
     <>
       <ListItem className={classes.item} key={data.cardCode}>
         <ListItemAvatar>
-          <Avatar className={classes.avatar}>
+          <Avatar
+            className={clsx(
+              data.typeRef === "Skill" ? classes.avatarType : classes.avatar
+            )}
+          >
             <img
+              className={clsx(data.typeRef === "Skill" && classes.avatarImg)}
               alt={data.type}
               src={`./img/common/types/${data.typeRef}_card.svg`}
             />
@@ -44,7 +50,11 @@ const CardItem = (props: { data: TypeCard }) => {
             secondary: classes.textSecondary,
           }}
           primary={data.name}
-          secondary={data.rarity.toLowerCase()}
+          secondary={
+            data.rarityRef === "None"
+              ? "Sem raridade"
+              : data.rarity.toLowerCase()
+          }
         />
 
         <ListItemAvatar className={classes.region}>
@@ -56,11 +66,17 @@ const CardItem = (props: { data: TypeCard }) => {
         </ListItemAvatar>
 
         <ListItemAvatar className={classes.rarity}>
-          <img
-            className={classes.avatarImg}
-            alt={data.rarityRef}
-            src={`./img/rarities/${data.rarityRef.toLowerCase()}_icon.png`}
-          />
+          <>
+            {data.rarityRef !== "None" ? (
+              <img
+                className={classes.avatarImg}
+                alt={data.rarityRef}
+                src={`./img/rarities/${data.rarityRef.toLowerCase()}_icon.png`}
+              />
+            ) : (
+              <NotInterested />
+            )}
+          </>
         </ListItemAvatar>
 
         <ListItemSecondaryAction>

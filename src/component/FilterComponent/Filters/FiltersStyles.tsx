@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
         color: grey[400],
       },
     },
-    // ---------------------------------------
     set: {
       display: "flex",
       gridGap: theme.spacing(0.5),
@@ -49,18 +48,17 @@ const useStyles = makeStyles((theme: Theme) =>
     setImg: {
       width: "30%",
     },
-    // ---------------------------------------
     gen: {
-      display: "grid",
+      display: "grid!important",
       gridTemplateColumns: "repeat(2,1fr)",
       gridGap: theme.spacing(0.5),
     },
     genRoot: {
       border: `transparent!important`,
       borderRadius: "4px!important",
-      display: "flex",
+      display: "flex!important",
       justifyContent: "flex-start",
-      padding: theme.spacing(1),
+      padding: theme.spacing(1) + "px!important",
     },
     genImg: {
       height: 24,
@@ -71,9 +69,8 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 400,
       textTransform: "capitalize",
     },
-    // ---------------------------------------
     mana: {
-      display: "flex",
+      display: "flex!important",
       justifyContent: "space-between",
     },
     manaRoot: {
@@ -88,8 +85,6 @@ const useStyles = makeStyles((theme: Theme) =>
     manaActive: {
       opacity: 1,
     },
-    // ---------------------------------------
-    
   })
 );
 

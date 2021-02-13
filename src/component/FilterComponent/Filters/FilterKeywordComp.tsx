@@ -23,15 +23,6 @@ let terms = keywords
       : true
   )
   .map((term) => ({ label: term.name, value: term.nameRef }));
-// return {
-//   label: item.name,
-//   value: item.nameRef,
-// };
-// terms.map((term) => {
-//   console.log("\nTerm: ", term.value);
-//   const termIsRegion = regions.find((region) => region.nameRef === term.value);
-//   console.log(termIsRegion);
-// });
 
 // Interface
 interface PropTypes {
@@ -42,7 +33,6 @@ interface PropTypes {
 const FilterKeywordComp = (props: PropTypes) => {
   // const classes = useStyles();
   const { data, handler } = props;
-  console.log(data);
   const keywordFilterHandler = (value: any) => {
     handler(value);
   };

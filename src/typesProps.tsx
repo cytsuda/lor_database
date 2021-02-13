@@ -41,6 +41,7 @@ export interface TypeCard {
 export interface reduxState {
   display: DisplayStateTypes;
   filter: FilterStateTypes;
+  search: string;
 }
 export interface DisplayStateTypes {
   cardDisplay: string;

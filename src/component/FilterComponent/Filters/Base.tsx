@@ -10,7 +10,7 @@ import useStyles from "./FiltersStyles";
 interface BaseProps {
   title: string;
   children: ReactChild;
-  handler: (value: any) => void;
+  handler?: (value: any) => void;
 }
 
 const Base = (props: BaseProps) => {
@@ -21,13 +21,15 @@ const Base = (props: BaseProps) => {
       <div className={classes.baseTitle}>
         <span className={classes.baseText}>{title}</span>
         <div className={classes.baseLine} />
-        <Button
-          size="small"
-          className={classes.baseBtn}
-          onClick={() => handler([])}
-        >
-          Limpar
-        </Button>
+        {handler && (
+          <Button
+            size="small"
+            className={classes.baseBtn}
+            onClick={() => handler([])}
+          >
+            Limpar
+          </Button>
+        )}
       </div>
       {children}
     </div>

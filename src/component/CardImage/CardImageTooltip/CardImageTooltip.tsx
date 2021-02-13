@@ -31,7 +31,11 @@ const KeywordsComponent = (props: { data: any }) => {
           className={classes.cardKeywordImg}
           alt={data.nameRef}
           src={`./img/common/keywords/Keyword_${
-            data.nameRef === "SpellOverwhelm" ? "Overwhelm" : data.nameRef
+            data.nameRef === "SpellOverwhelm"
+              ? "Overwhelm"
+              : data.nameRef === "Autoplay"
+              ? "Trap"
+              : data.nameRef
           }.svg`}
         />
         <span className={classes.cardKeywordInfo}>{data.name}</span>

@@ -2,7 +2,6 @@ import {
   createStyles,
   makeStyles,
   Theme,
-  fade,
 } from "@material-ui/core/styles";
 
 const drawerWidthRight = 360;
@@ -81,61 +80,6 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginRight: 0,
-    },
-    controller: {
-      display: "flex",
-      justifyContent: "space-between",
-      background: "transparent",
-    },
-    filter: {
-      display: "flex",
-    },
-    search: {
-      position: "relative",
-      borderRadius: theme.shape.borderRadius,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        marginLeft: theme.spacing(1),
-        width: "auto",
-      },
-    },
-    searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: "100%",
-      position: "absolute",
-      pointerEvents: "none",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    searchInputRoot: {
-      color: "inherit",
-      height: "100%",
-    },
-    searchInputBox: {
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        width: "12ch",
-        "&:focus": {
-          width: "20ch",
-        },
-      },
-    },
-    filterBtnRight: {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-    },
-    filterBtnCenter: {
-      borderRadius: 0,
     },
   })
 );

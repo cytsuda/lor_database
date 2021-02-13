@@ -24,7 +24,7 @@ const FilterRegionComp = (props: PropTypes) => {
 
   return (
     <ToggleButtonGroup
-      className={classes.gen}
+      classes={{ root: classes.gen }}
       value={data.value}
       onChange={(e, value) => handler(value)}
     >
