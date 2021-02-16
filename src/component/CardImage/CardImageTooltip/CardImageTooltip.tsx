@@ -3,10 +3,6 @@ import React from "react";
 // Material ui
 import { Tooltip } from "@material-ui/core";
 
-// Custom Component
-import SpecialTag from "../../SpecialTag/SpecialTag";
-import SpriteImg from "../../SpriteImg/SpriteImg";
-
 // Style
 import useStyles from "./CardImageTooltipStyle";
 

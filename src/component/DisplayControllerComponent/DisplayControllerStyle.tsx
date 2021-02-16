@@ -1,4 +1,5 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,6 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
     filterOptions: {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+    },
+    bold: {
+      color: red[500],
+      fontWeight: 900,
+      borderBottom: `1px solid ${red[500]}`,
     },
   })
 );

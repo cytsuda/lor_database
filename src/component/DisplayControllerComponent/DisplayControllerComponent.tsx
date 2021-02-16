@@ -15,17 +15,18 @@ import {
 } from "@material-ui/icons";
 // Custom Component
 import SearchComponent from "../SearchComponent/SearchComponent";
+import Tooltip from "../Tooltip/TooltipComponent";
 
 // Types
 import { reduxState } from "../../typesProps";
 
 // Action
-// import {} from "../../redux/actions/filterActions";
 import {
   cardDisplayChange,
   cardCollectibleChange,
 } from "../../redux/actions/displayActions";
 import { searchAction } from "../../redux/actions/searchAction";
+
 // Style
 import useStyles from "./DisplayControllerStyle";
 
@@ -33,6 +34,34 @@ interface DisplayControllerType {
   open: boolean;
   setOpen: () => void;
 }
+
+const displayGrid = [
+  {
+    value: "smallGrid",
+    label: "cinco por linha",
+    title: "Mostrar cinco cartas por linha",
+    icon: <ViewModuleOutlined />,
+  },
+  {
+    value: "largeGrid",
+    label: "dez por linha",
+    title: "Mostrar dez cartas por linha",
+    icon: <ViewComfyOutlined />,
+  },
+  {
+    value: "list",
+    label: "exibir cartas em lista",
+    title: "Mostrar cartas em lista ",
+    icon: <ViewStreamOutlined />,
+  },
+  {
+    value: "table",
+    label: "exibir cartas em uma tabela",
+    title: "Mostrar carrtas tabelada",
+    icon: <ViewListOutlined />,
+  },
+];
+
 const DisplayControllerComponent = (props: DisplayControllerType) => {
   const { open, setOpen } = props;
   const classes = useStyles();
@@ -60,39 +89,55 @@ const DisplayControllerComponent = (props: DisplayControllerType) => {
         onChange={handleCardDisplay}
         aria-label="alterar a exibição"
       >
-        <ToggleButton value="smallGrid" aria-label="cinco por linha">
-          <ViewModuleOutlined />
-        </ToggleButton>
-        <ToggleButton value="largeGrid" aria-label="dez por linha">
-          <ViewComfyOutlined />
-        </ToggleButton>
-        <ToggleButton value="list" aria-label="lista">
-          <ViewStreamOutlined />
-        </ToggleButton>
-        <ToggleButton value="table" aria-label="tabela">
-          <ViewListOutlined />
-        </ToggleButton>
+        {displayGrid.map((item) => (
+          <ToggleButton value={item.value} aria-label={item.label}>
+            <Tooltip padding={[1, 2]} title={item.title}>
+              {item.icon}
+            </Tooltip>
+          </ToggleButton>
+        ))}
       </ToggleButtonGroup>
       <div className={classes.filter}>
         <SearchComponent value={search} handler={searchHandler} />
-        <ToggleButton
-          className={classes.filterVisibility}
-          value={!collectible}
-          selected={collectible}
-          onChange={handleCardCollectible}
-          aria-label="filter"
+
+        <Tooltip
+          padding={[1, 2]}
+          title={
+            collectible ? (
+              "Mostrar todos"
+            ) : (
+              <span>
+                Esconder <span className={classes.bold}>não</span> colecionáveis
+              </span>
+            )
+          }
         >
-          {collectible ? <Visibility /> : <VisibilityOff />}
-        </ToggleButton>
-        <ToggleButton
-          className={classes.filterOptions}
-          value="check"
-          selected={open}
-          onChange={setOpen}
-          aria-label="filter"
+          <ToggleButton
+            className={classes.filterVisibility}
+            value={!collectible}
+            selected={collectible}
+            onChange={handleCardCollectible}
+            aria-label="filter"
+          >
+            {collectible ? <Visibility /> : <VisibilityOff />}
+          </ToggleButton>
+        </Tooltip>
+        <Tooltip
+          padding={[1, 2]}
+          title={
+            open ? "Fechar as opções do filtro." : "Abrir as opções do filtro."
+          }
         >
-          <FilterList />
-        </ToggleButton>
+          <ToggleButton
+            className={classes.filterOptions}
+            value="check"
+            selected={open}
+            onChange={setOpen}
+            aria-label="filter"
+          >
+            <FilterList />
+          </ToggleButton>
+        </Tooltip>
       </div>
     </Box>
   );
