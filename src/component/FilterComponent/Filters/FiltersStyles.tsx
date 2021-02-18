@@ -2,7 +2,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { grey } from "@material-ui/core/colors";
 
-const borderColor = grey[700];
+const borderColor = grey[500];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,9 +41,16 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       gridGap: theme.spacing(0.5),
     },
+    setBtn: {
+      borderColor: "transparent!important",
+      padding: "0!important",
+    },
     setItem: {
+      padding: theme.spacing(1),
       borderRadius: `${theme.spacing(0.5)}px !important`,
       border: `1px solid ${fade(borderColor, 0.5)}!important`,
+      width: "100%",
+      height: "100%",
     },
     setImg: {
       width: "30%",
@@ -53,12 +60,17 @@ const useStyles = makeStyles((theme: Theme) =>
       gridTemplateColumns: "repeat(2,1fr)",
       gridGap: theme.spacing(0.5),
     },
+    genComp: {
+      display: "flex",
+      alignItems: "center",
+      padding: theme.spacing(1) + "px!important",
+    },
     genRoot: {
       border: `transparent!important`,
       borderRadius: "4px!important",
       display: "flex!important",
       justifyContent: "flex-start",
-      padding: theme.spacing(1) + "px!important",
+      padding: "0!important",
     },
     genImg: {
       height: 24,
@@ -72,12 +84,15 @@ const useStyles = makeStyles((theme: Theme) =>
     mana: {
       display: "flex!important",
       justifyContent: "space-between",
-    },
-    manaRoot: {
-      borderRadius: "50%!important",
-      opacity: 0.3,
       cursor: "pointer",
       fontSize: theme.typography.pxToRem(12),
+      borderRadius: "50%!important",
+    },
+    manaRoot: {
+      padding: "0!important",
+      backgroundColor: "transparent!important",
+      borderColor: "transparent!important",
+      opacity: 0.3,
       "&:hover": {
         opacity: 1,
       },

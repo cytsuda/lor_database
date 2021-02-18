@@ -23,6 +23,15 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 900,
       borderBottom: `1px solid ${red[500]}`,
     },
+    toggleBtn: {
+      padding: 0,
+    },
+    toggleIcon: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: theme.spacing(1),
+    },
   })
 );
 

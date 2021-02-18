@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import { useSelector, useDispatch } from "react-redux";
 
 // Material-UI
 import {

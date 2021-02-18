@@ -2,6 +2,8 @@ import React from "react";
 
 // Material-Ui
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
+// Custom component
+import Tooltip from "../../Tooltip/TooltipComponent";
 
 // Styles
 import useStyles from "./FiltersStyles";
@@ -34,12 +36,16 @@ const FilterTypeComp = (props: PropTypes) => {
           key={item.nameRef}
           value={item.nameRef}
         >
-          <img
-            className={classes.genImg}
-            alt={item.name}
-            src={`./img/common/types/${item.nameRef}_card.svg`}
-          />
-          <span className={classes.genInfo}>{item.name}</span>
+          <Tooltip title={item.name} padding={[1, 2]}>
+            <div className={classes.genComp}>
+              <img
+                className={classes.genImg}
+                alt={item.name}
+                src={`./img/common/types/${item.nameRef}_card.svg`}
+              />
+              <span className={classes.genInfo}>{item.name}</span>
+            </div>
+          </Tooltip>
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

@@ -2,6 +2,8 @@ import React, { ReactChild } from "react";
 
 // Material-Ui
 import { Button } from "@material-ui/core";
+// Custom component
+import Tooltip from "../../Tooltip/TooltipComponent";
 
 // Styles
 import useStyles from "./FiltersStyles";
@@ -22,13 +24,15 @@ const Base = (props: BaseProps) => {
         <span className={classes.baseText}>{title}</span>
         <div className={classes.baseLine} />
         {handler && (
-          <Button
-            size="small"
-            className={classes.baseBtn}
-            onClick={() => handler([])}
-          >
-            Limpar
-          </Button>
+          <Tooltip title={`Limpar filtro: ${title.toLowerCase()}`} padding={[1, 2]}>
+            <Button
+              size="small"
+              className={classes.baseBtn}
+              onClick={() => handler([])}
+            >
+              Limpar
+            </Button>
+          </Tooltip>
         )}
       </div>
       {children}

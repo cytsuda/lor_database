@@ -70,7 +70,10 @@ const DisplayControllerComponent = (props: DisplayControllerType) => {
   const { cardDisplay, collectible } = display;
 
   const handleCardDisplay = (event: any, value: string) => {
-    dispatch(cardDisplayChange(value));
+    console.log(value);
+    if (value !== null) {
+      dispatch(cardDisplayChange(value));
+    }
   };
 
   const handleCardCollectible = () => {
@@ -90,9 +93,13 @@ const DisplayControllerComponent = (props: DisplayControllerType) => {
         aria-label="alterar a exibição"
       >
         {displayGrid.map((item) => (
-          <ToggleButton value={item.value} aria-label={item.label}>
+          <ToggleButton
+            className={classes.toggleBtn}
+            value={item.value}
+            aria-label={item.label}
+          >
             <Tooltip padding={[1, 2]} title={item.title}>
-              {item.icon}
+              <div className={classes.toggleIcon}>{item.icon}</div>
             </Tooltip>
           </ToggleButton>
         ))}

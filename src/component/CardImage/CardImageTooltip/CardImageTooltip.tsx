@@ -47,13 +47,11 @@ const CardImageTooltipComponent = (props: { data: TypeCard }) => {
   return (
     <div className={classes.card}>
       <div className={classes.cardType}>
-        {data.typeRef !== "Skill" && (
-          <img
-            className={classes.cartTypeImg}
-            src={`./img/common/types/${data.typeRef}_card.svg`}
-            alt={data.typeRef}
-          />
-        )}
+        <img
+          className={classes.cartTypeImg}
+          src={`./img/common/types/${data.typeRef}_card.svg`}
+          alt={data.typeRef}
+        />
         <span className={classes.cartTypeInfo}>{data.type}</span>
       </div>
       {data.keywordRefs.length > 0 ? (

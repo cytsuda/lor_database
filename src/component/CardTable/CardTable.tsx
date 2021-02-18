@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import {
   Paper,
@@ -8,7 +8,6 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  TablePagination,
 } from "@material-ui/core";
 
 // Custom Components

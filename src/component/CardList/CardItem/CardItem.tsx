@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import clsx from "clsx";
 import {
   Avatar,
   ListItem,
@@ -17,6 +16,7 @@ import { ExpandMore, ExpandLess, NotInterested } from "@material-ui/icons";
 // Custom Components
 import SpecialComponent from "../../SpecialComponent/SpecialComponent";
 import KeywordComponent from "../../KeywordComponent/KeywordComponent";
+import ManaCircle from "../../ManaCircle/ManaCircle";
 
 // Types
 import { TypeCard } from "../../../typesProps";
@@ -32,13 +32,8 @@ const CardItem = (props: { data: TypeCard }) => {
     <>
       <ListItem className={classes.item} key={data.cardCode}>
         <ListItemAvatar>
-          <Avatar
-            className={clsx(
-              data.typeRef === "Skill" ? classes.avatarType : classes.avatar
-            )}
-          >
+          <Avatar className={classes.avatar}>
             <img
-              className={clsx(data.typeRef === "Skill" && classes.avatarImg)}
               alt={data.type}
               src={`./img/common/types/${data.typeRef}_card.svg`}
             />
@@ -47,6 +42,7 @@ const CardItem = (props: { data: TypeCard }) => {
 
         <ListItemText
           classes={{
+            root: classes.textRoot,
             secondary: classes.textSecondary,
           }}
           primary={data.name}
@@ -57,7 +53,35 @@ const CardItem = (props: { data: TypeCard }) => {
           }
         />
 
-        <ListItemAvatar className={classes.region}>
+        {(data.typeRef === "Follower" || data.typeRef === "Champion") && (
+          <div className={classes.status}>
+            <ListItemAvatar className={classes.center}>
+              <div className={classes.info}>
+                <img
+                  className={classes.infoImg}
+                  src="./img/common/keywords/Keyword_Attack.svg"
+                  alt="Ataque"
+                />
+                <span className={classes.infoTxt}>{data.attack}</span>
+              </div>
+            </ListItemAvatar>
+            <ListItemAvatar className={classes.center}>
+              <div className={classes.info}>
+                <img
+                  className={classes.infoImg}
+                  src="./img/common/keywords/Keyword_Heart.svg"
+                  alt="Ataque"
+                />
+                <span className={classes.infoTxt}>{data.health}</span>
+              </div>
+            </ListItemAvatar>
+          </div>
+        )}
+
+        <ListItemAvatar className={classes.center}>
+          <ManaCircle value={data.cost.toString()} />
+        </ListItemAvatar>
+        <ListItemAvatar className={classes.center}>
           <img
             className={classes.avatarImg}
             alt={`icon-${data.regionRef.toLowerCase()}.png`}

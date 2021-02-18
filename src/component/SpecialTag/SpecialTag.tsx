@@ -8,7 +8,7 @@ import rawData from "../../data/lor_data.json";
 import { TypeCard } from "../../typesProps";
 
 export default function SpecialTag(props: any) {
-  const { type, value, cardRef, children } = props;
+  const { type, cardRef, children } = props;
   const [loading, setLoading] = useState(true);
   const classes = useStyles();
 

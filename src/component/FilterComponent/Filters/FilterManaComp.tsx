@@ -1,10 +1,9 @@
 import React from "react";
-import clsx from "clsx";
 // Material-Ui
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
 
 // CustomComponent
-// import ManaCircle from "../../ManaCircle/ManaCircle";
+import Tooltip from "../../Tooltip/TooltipComponent";
 
 // Styles
 import useStyles from "./FiltersStyles";
@@ -36,11 +35,22 @@ const FilterManaComp = (props: PropTypes) => {
           key={"mana_" + item}
           value={item}
           classes={{
-            root: clsx(manaClasses.mana, classes.manaRoot),
+            root: classes.manaRoot,
             selected: classes.manaActive,
           }}
         >
-          <span>{item === 7 ? item + "+" : item}</span>
+          <Tooltip
+            title={
+              item === 7
+                ? "Custo: " + item.toString() + "+"
+                : "Custo: " + item.toString()
+            }
+            padding={[1, 2]}
+          >
+            <div className={manaClasses.mana}>
+              <span>{item === 7 ? item + "+" : item}</span>
+            </div>
+          </Tooltip>
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

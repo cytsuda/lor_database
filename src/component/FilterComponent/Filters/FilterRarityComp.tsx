@@ -2,6 +2,8 @@ import React from "react";
 
 // Material-Ui
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
+// Custom component
+import Tooltip from "../../Tooltip/TooltipComponent";
 
 // Styles
 import useStyles from "./FiltersStyles";
@@ -36,12 +38,23 @@ const FilterRarityComp = (props: PropTypes) => {
               key={item.nameRef}
               value={item.nameRef}
             >
-              <img
-                className={classes.genImg}
-                alt={item.nameRef}
-                src={`./img/rarities/rarities_${item.nameRef.toLowerCase()}.png`}
-              />
-              <span className={classes.genInfo}>{item.name.toLowerCase()}</span>
+              <Tooltip
+                title={
+                  item.name[0].toUpperCase() + item.name.slice(1).toLowerCase()
+                }
+                padding={[1, 2]}
+              >
+                <div className={classes.genComp}>
+                  <img
+                    className={classes.genImg}
+                    alt={item.nameRef}
+                    src={`./img/rarities/rarities_${item.nameRef.toLowerCase()}.png`}
+                  />
+                  <span className={classes.genInfo}>
+                    {item.name.toLowerCase()}
+                  </span>
+                </div>
+              </Tooltip>
             </ToggleButton>
           )
       )}

@@ -1,9 +1,5 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { fade } from "@material-ui/core/styles/colorManipulator";
 import { grey } from "@material-ui/core/colors";
-
-const bgColor = grey[900];
-const bdColor = grey[800];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,13 +9,13 @@ const useStyles = makeStyles((theme: Theme) =>
     img: {
       width: "100%",
     },
+    status: {
+      display: "flex",
+      flex: "2 1 0",
+    },
     avatar: {
       backgroundColor: "transparent",
       border: `1px solid ${grey[600]}`,
-    },
-    avatarType: {
-      backgroundColor: "transparent",
-      borderColor: "transparent",
     },
     avatarImg: {
       height: 40,
@@ -30,14 +26,35 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       marginRight: theme.spacing(2),
     },
-    region: {
+    info: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      marginLeft: "auto",
+    },
+    infoImg: {
+      height: 32,
+    },
+    infoTxt: {
+      fontWeight: 600,
+      fontSize: theme.typography.pxToRem(24),
+      marginLeft: -theme.spacing(1),
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    center: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    mr: {
+      marginRight: "auto",
     },
     text: {
       fontSize: theme.typography.pxToRem(16),
+    },
+    textRoot: {
+      flex: "1 4 0",
     },
     textSecondary: {
       color: grey[500],
