@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
     },
+    center: {
+      margin: "0 auto",
+      paddiong: theme.spacing(2),
+    },
   })
 );
 

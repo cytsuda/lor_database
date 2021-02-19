@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme: Theme) =>
     tableImg: {
       height: 32,
     },
+    tableKeyword: {
+    },
     colWidth: {
       width: "30%",
     },

@@ -21,11 +21,28 @@ const KeywordComponent = (props: { data: string; table?: boolean }) => {
       arrow
     >
       <div className={clsx(classes.keyword, table && "table")}>
-        <img
-          src={`./img/common/keywords/Keyword_${info.nameRef}.svg`}
-          alt={info.nameRef}
-          className={clsx(classes.keywordImg, table && "table")}
-        />
+        {info.nameRef === "Immobile" ? (
+          <>
+            <img
+              src={`./img/common/keywords/Keyword_CantAttack.svg`}
+              alt={info.nameRef}
+              className={clsx(classes.keywordImg, table && "table")}
+            />
+            <img
+              src={`./img/common/keywords/Keyword_CantBlock.svg`}
+              alt={info.nameRef}
+              className={clsx(classes.keywordImg, table && "table")}
+            />
+          </>
+        ) : (
+          <img
+            src={`./img/common/keywords/Keyword_${
+              info.nameRef === "SpellOverwhelm" ? "Overwhelm" : info.nameRef
+            }.svg`}
+            alt={info.nameRef}
+            className={clsx(classes.keywordImg, table && "table")}
+          />
+        )}
         <span className={clsx(classes.keywordInfo, table && "table")}>
           {info.name}
         </span>

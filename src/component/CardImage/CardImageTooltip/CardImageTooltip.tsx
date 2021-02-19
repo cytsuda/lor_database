@@ -2,7 +2,6 @@ import React from "react";
 
 // Material ui
 import { Tooltip } from "@material-ui/core";
-
 // Style
 import useStyles from "./CardImageTooltipStyle";
 
@@ -23,17 +22,28 @@ const KeywordsComponent = (props: { data: any }) => {
   return (
     <div className={classes.cardKeyword}>
       <div className={classes.cardKeywordTittle}>
-        <img
-          className={classes.cardKeywordImg}
-          alt={data.nameRef}
-          src={`./img/common/keywords/Keyword_${
-            data.nameRef === "SpellOverwhelm"
-              ? "Overwhelm"
-              : data.nameRef === "Autoplay"
-              ? "Trap"
-              : data.nameRef
-          }.svg`}
-        />
+        {data.nameRef === "Immobile" ? (
+          <>
+            <img
+              src={`./img/common/keywords/Keyword_CantAttack.svg`}
+              alt={data.nameRef}
+              className={classes.cardKeywordImg}
+            />
+            <img
+              src={`./img/common/keywords/Keyword_CantBlock.svg`}
+              alt={data.nameRef}
+              className={classes.cardKeywordImg}
+            />
+          </>
+        ) : (
+          <img
+            src={`./img/common/keywords/Keyword_${
+              data.nameRef === "SpellOverwhelm" ? "Overwhelm" : data.nameRef
+            }.svg`}
+            alt={data.nameRef}
+            className={classes.cardKeywordImg}
+          />
+        )}
         <span className={classes.cardKeywordInfo}>{data.name}</span>
       </div>
       <div className={classes.cardKeywordDesc}>{data.description}</div>

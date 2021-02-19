@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import clsx from "clsx";
 import { useSelector } from "react-redux";
 
 //Material Ui
-import { Pagination } from "@material-ui/lab";
 
 // CustomComponent
 import Layout from "../../hoc/LayoutWFilter/Layout";
-import CardImage from "../../component/CardImage/CardImage";
 import CardList from "../../component/CardList/CardList";
 import CardTable from "../../component/CardTable/CardTable";
 
-// CustomStyle
-import useStyle from "./HomeStyle";
+// Custom Sreen
+import GridScreen from "./GridScreen/GridScreen";
 
 // Types
 import { reduxState } from "../../typesProps";
@@ -26,17 +23,12 @@ let dataSort = rawData.sort((a, b) =>
 dataSort = dataSort.sort((a, b) => a.cost - b.cost);
 
 const CardScreen = () => {
-  const classes = useStyle();
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
   const [data, setData] = useState(dataSort);
   const { filter, display, search } = useSelector((state: reduxState) => state);
   const { cardDisplay, collectible } = display;
   const { set, region, mana, type, rarity, keyword } = filter;
 
   useEffect(() => {
-    setLoading(true);
-    setPage(1);
     setData((prev) => {
       let newData = dataSort;
       if (collectible) {
@@ -108,43 +100,16 @@ const CardScreen = () => {
         );
       }
 
-      console.log(newData.length);
       return newData;
     });
-    setLoading(false);
   }, [collectible, set, region, mana, type, rarity, keyword, search]);
-
-  const handleChangePage = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-  };
-
-  const showedData = data.slice((page - 1) * 100, page * 100);
 
   return (
     <Layout>
-      <h2 className={classes.title}>
-        Home Screen - {cardDisplay} {loading && "- IS LOADING"}
-      </h2>
-      {cardDisplay === "list" && <CardList data={showedData} />}
-      {cardDisplay === "table" && <CardTable data={showedData} />}
+      {cardDisplay === "list" && <CardList data={data} />}
+      {cardDisplay === "table" && <CardTable data={data} />}
       {(cardDisplay === "smallGrid" || cardDisplay === "largeGrid") && (
-        <div className={classes.main}>
-          <div className={clsx(classes.container, cardDisplay)}>
-            {showedData.map((item) => (
-              <CardImage key={item.cardCode} data={item} />
-            ))}
-          </div>
-          {data.length > 100 && (
-            <Pagination
-              className={classes.pagination}
-              count={Math.ceil(data.length / 100)}
-              onChange={handleChangePage}
-            />
-          )}
-        </div>
+        <GridScreen data={data} dataType={cardDisplay} />
       )}
     </Layout>
   );

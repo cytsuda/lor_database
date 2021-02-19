@@ -1,5 +1,6 @@
-import React from "react";
-import { List, Divider } from "@material-ui/core";
+import React, { useState } from "react";
+import { List, Divider , ListItem} from "@material-ui/core";
+import { Pagination } from "@material-ui/lab";
 
 // Custom Components
 import CardItem from "./CardItem/CardItem";
@@ -11,16 +12,34 @@ import useStyles from "./CardListStyle";
 import { TypeCard } from "../../typesProps";
 
 const CardList = (props: { data: TypeCard[] }) => {
-  const classes = useStyles();
   const { data } = props;
+  const classes = useStyles();
+  const [page, setPage] = useState(1);
+  const [showedData, setShowedData] = useState(data.slice(0, 100));
+  const pageChangeHandler = (event: any, page: number) => {
+    setPage(page);
+    const init = (page-1) * 100;
+    const end = (page) * 100;
+    setShowedData(data.slice(init, end));
+  };
   return (
     <List className={classes.container}>
-      {data.map((item, index) => (
+      {showedData.map((item, index) => (
         <div key={index}>
           <CardItem data={item} />
           {index + 1 !== data.length && <Divider />}
         </div>
       ))}
+      <ListItem alignItems="center">
+
+      <Pagination
+        classes={{root:classes.center}}
+        page={page}
+        count={Math.ceil(data.length / 100)}
+        color="primary"
+        onChange={pageChangeHandler}
+      />
+      </ListItem>
     </List>
   );
 };

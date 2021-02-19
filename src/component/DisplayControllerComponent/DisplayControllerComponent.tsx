@@ -85,7 +85,7 @@ const DisplayControllerComponent = (props: DisplayControllerType) => {
   };
 
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} mb={3}>
       <ToggleButtonGroup
         value={cardDisplay}
         exclusive

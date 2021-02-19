@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
         border: 0,
         padding: 0,
         display: "inline-flex",
-        marginLeft: theme.spacing(1),
+        margin: theme.spacing(1, 2, 1, 0),
       },
     },
     keywordImg: {
