@@ -1,0 +1,79 @@
+/* 1 - 700 normal */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 700;
+  font-style: normal;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Heavy.otf");
+}
+
+/* 2 - 700 Italic */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 700;
+  font-style: italic;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-HeavyItalic.otf");
+}
+
+/* 3 - 600 Normal */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 600;
+  font-style: normal;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Bold.otf");
+}
+/* 4 - 600 Italic */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 600;
+  font-style: Italic;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-BoldItalic.otf");
+}
+
+/* 5 - 500 normal */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 500;
+  font-style: normal;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Medium.otf");
+}
+
+/* 6 - 500 Italic */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 500;
+  font-style: italic;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-MediumItalic.otf");
+}
+
+/* 7 - 400 Italic */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 400;
+  font-style: italic;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Italic.otf");
+}
+
+/* 8 - 400 Normal */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Regular.otf");
+}
+
+/* 9 - 300 Normal */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 300;
+  font-style: normal;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Light.otf");
+}
+
+/* 10 - 300 Italic */
+@font-face {
+  font-family: "Beoford";
+  font-weight: 300;
+  font-style: italic;
+  src: url("./BeaufortForLoL-OTF/BeaufortforLOL-LightItalic.otf");
+}
+

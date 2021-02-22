@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="32" width="32" viewBox="0 0 32 32">
+    <defs xmlns="http://www.w3.org/2000/svg">
+        <linearGradient id="lor-lifesteal-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="25%" stop-color="#f0773b"/>
+            <stop offset="75%" stop-color="#9b1a09"/>
+        </linearGradient>
+    </defs>
+    <path d="M16,3 c3.512,5.949 9,11.898 9,17.407 s-3.293,8.593 -9,8.593 c-5.707,0 -9,-3.085 -9,-8.593 s5.488,-11.458 9,-17.407 zM17.317,15.338999999999999 h-2.6340000000000003 v3.305 l-3.293,0 v2.644 l3.293,0 v3.305 h2.6340000000000003 v-3.305 h3.293 v-2.644 h-3.293 v-3.305 z" fill="url(#lor-lifesteal-fill)" transform="translate(-0.6211180090904236,-0.6211180090904236) "/>
+</svg>
