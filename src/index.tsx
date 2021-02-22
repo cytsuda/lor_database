@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import store from "./redux/store";
@@ -13,9 +12,7 @@ import "./index.css";
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+      <App />
     </Provider>
   </ThemeProvider>,
   document.getElementById("root")

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { List, Divider , ListItem} from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
+import { Helmet } from "react-helmet";
 
 // Custom Components
 import CardItem from "./CardItem/CardItem";
@@ -23,6 +24,10 @@ const CardList = (props: { data: TypeCard[] }) => {
     setShowedData(data.slice(init, end));
   };
   return (
+    <>
+      <Helmet>
+        <title>LoR Showcase - Listas</title>
+    </Helmet>
     <List className={classes.container}>
       {showedData.map((item, index) => (
         <div key={index}>
@@ -41,6 +46,7 @@ const CardList = (props: { data: TypeCard[] }) => {
       />
       </ListItem>
     </List>
+    </>
   );
 };
 

@@ -1,8 +1,4 @@
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-} from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 const drawerWidthRight = 360;
 const drawerWidthLeft = 250;
@@ -10,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
+      width: "100%",
     },
     appBar: {
       transition: theme.transitions.create(["margin", "width"], {

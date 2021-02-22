@@ -4,6 +4,7 @@ import clsx from "clsx";
 // Material-UI
 import {
   AppBar,
+  Box,
   CssBaseline,
   Divider,
   Drawer,
@@ -39,7 +40,7 @@ export default function CustomLayout(props: { children: React.ReactNode }) {
   };
 
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -97,6 +98,6 @@ export default function CustomLayout(props: { children: React.ReactNode }) {
         <Toolbar />
         <FilterComponent />
       </Drawer>
-    </div>
+    </Box>
   );
 }

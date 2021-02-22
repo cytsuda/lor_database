@@ -1,4 +1,9 @@
-import { createStyles,makeStyles, Theme, fade, } from "@material-ui/core/styles";
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  fade,
+} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -9,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
       border: `1px solid ${fade(theme.palette.common.white, 0.12)}`,
       borderRight: 0,
       "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.10),
+        backgroundColor: fade(theme.palette.common.white, 0.1),
       },
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,

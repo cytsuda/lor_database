@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import clsx from "clsx";
 import {
   Paper,
@@ -66,88 +67,95 @@ const CardList = (props: { data: TypeCard[] }) => {
   }, [data, row]);
 
   return (
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
-        <Table stickyHeader>
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  className={clsx(column.classes)}
-                  align={column.align ? "center" : "inherit"}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {showedData.map((item) => (
-              <TableRow hover tabIndex={-1} key={item.cardCode}>
-                <TableCell key={item.cardCode}>{item.cardCode}</TableCell>
-                <TableCell key={item.cardCode + "_name"}>{item.name}</TableCell>
-                <TableCell key={item.cardCode + "_type"}>
-                  <img
-                    className={classes.tableImg}
-                    alt={item.typeRef}
-                    src={`./img/common/types/${item.typeRef}_card.svg`}
-                  />
-                </TableCell>
-
-                <TableCell key={item.cardCode + "_mana"}>
-                  <ManaCircle isActive value={item.cost.toString()} />
-                </TableCell>
-
-                <TableCell key={item.cardCode + "_rarity"} align="center">
-                  {item.rarityRef === "None" ? (
-                    <Block />
-                  ) : (
+    <>
+      <Helmet>
+        <title>LoR Showcase - Tabela</title>
+      </Helmet>
+      <Paper className={classes.root}>
+        <TableContainer className={classes.container}>
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    className={clsx(column.classes)}
+                    align={column.align ? "center" : "inherit"}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {showedData.map((item) => (
+                <TableRow hover tabIndex={-1} key={item.cardCode}>
+                  <TableCell key={item.cardCode}>{item.cardCode}</TableCell>
+                  <TableCell key={item.cardCode + "_name"}>
+                    {item.name}
+                  </TableCell>
+                  <TableCell key={item.cardCode + "_type"}>
                     <img
                       className={classes.tableImg}
-                      alt={item.rarity}
-                      src={`./img/rarities/${item.rarityRef}_icon.png`}
+                      alt={item.typeRef}
+                      src={`./img/common/types/${item.typeRef}_card.svg`}
                     />
-                  )}
-                </TableCell>
+                  </TableCell>
 
-                <TableCell key={item.cardCode + "_region"}>
-                  <img
-                    className={classes.tableImg}
-                    alt={item.region}
-                    src={`./img/regions/icon-${item.regionRef}.png`}
-                  />
-                </TableCell>
-                <TableCell key={item.cardCode + "_description"}>
-                  {SpecialComponent(
-                    item.descriptionNew,
-                    item.associatedCardRefs
-                  )}
-                </TableCell>
+                  <TableCell key={item.cardCode + "_mana"}>
+                    <ManaCircle isActive value={item.cost.toString()} />
+                  </TableCell>
 
-                <TableCell
-                  classes={{ root: classes.tableKeyword }}
-                  key={item.cardCode + "_keywords"}
-                >
-                  {item.keywordRefs.map((el, index) => (
-                    <KeywordComponent key={index} data={el} table={true} />
-                  ))}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        component="div"
-        count={data.length}
-        rowsPerPageOptions={[10, 25, 100]}
-        rowsPerPage={row}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
-    </Paper>
+                  <TableCell key={item.cardCode + "_rarity"} align="center">
+                    {item.rarityRef === "None" ? (
+                      <Block />
+                    ) : (
+                      <img
+                        className={classes.tableImg}
+                        alt={item.rarity}
+                        src={`./img/rarities/${item.rarityRef}_icon.png`}
+                      />
+                    )}
+                  </TableCell>
+
+                  <TableCell key={item.cardCode + "_region"}>
+                    <img
+                      className={classes.tableImg}
+                      alt={item.region}
+                      src={`./img/regions/icon-${item.regionRef}.png`}
+                    />
+                  </TableCell>
+                  <TableCell key={item.cardCode + "_description"}>
+                    {SpecialComponent(
+                      item.descriptionNew,
+                      item.associatedCardRefs
+                    )}
+                  </TableCell>
+
+                  <TableCell
+                    classes={{ root: classes.tableKeyword }}
+                    key={item.cardCode + "_keywords"}
+                  >
+                    {item.keywordRefs.map((el, index) => (
+                      <KeywordComponent key={index} data={el} table={true} />
+                    ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          component="div"
+          count={data.length}
+          rowsPerPageOptions={[10, 25, 100]}
+          rowsPerPage={row}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </>
   );
 };
 export default CardList;

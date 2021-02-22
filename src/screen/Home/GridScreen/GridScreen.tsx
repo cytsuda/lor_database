@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
 
@@ -36,6 +37,9 @@ const GridScreen = (props: GridScreenType) => {
 
   return (
     <>
+      <Helmet>
+        <title>LoR Showcase - Cartas</title>
+      </Helmet>
       {(dataType === "smallGrid" || dataType === "largeGrid") && (
         <div className={classes.main}>
           <div className={clsx(classes.container, dataType)}>
